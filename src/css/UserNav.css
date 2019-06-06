@@ -1,0 +1,28 @@
+.navBar{
+background-color: black;
+  width: 100vw;
+  position: sticky;
+}
+#account {
+    color: black;
+    border: none;
+    background-color: #75af5b;
+    margin-right: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    #loginButton {
+      margin-right: 20vw;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    #loginButton {
+      margin-right: 10vw;
+    }
+  }
+  
+  .navbar{
+    padding-right:0px;
+    padding-left:0px;
+  }

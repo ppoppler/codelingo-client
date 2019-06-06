@@ -1,0 +1,46 @@
+.result {
+  border-radius: 20px;
+  margin-left: -10vw;
+  height: 40vh;
+  width: 50vw;
+  font-family: "Rubix", sans-serif;
+  color: white;
+}
+
+.result h1 {
+  margin-left: 10vw;
+  font-size: 8vh;
+}
+.result h2 {
+  margin-left: 5vw;
+  font-size: 4vh;
+}
+.result h3 {
+  text-align: center;
+}
+#answer {
+  border-style: solid;
+  border-color: white;
+  border-width: thick;
+  border-radius: 20px;
+  width: 20vw;
+  height: 5vh;
+  background-color: black;
+  margin-left: 25vw;
+}
+
+.alignans{
+  margin-right:350px;
+}
+
+.correct {
+  background-color:#75af5b;
+}
+
+.timeout {
+  background-color:#c12525;
+}
+
+.incorrect{
+  background-color:#c12525;
+}

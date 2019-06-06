@@ -1,0 +1,31 @@
+.questionCard {
+  border-style: solid;
+  border-color: white;
+  border-width: thick;
+  border-radius: 20px;
+  width: auto;
+  height: 20vh;
+}
+
+.questionCard h1 {
+  color: white;
+  text-align: center;
+  margin-top: 7vh;
+}
+
+.questionCard label {
+  width: fill;
+  height: fill;
+  border-radius: 15px;
+}
+.questionCard:hover {
+  background-color: green !important;
+}
+
+input[type="radio"]:checked + label {
+  background-color: green;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+}

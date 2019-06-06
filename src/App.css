@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loginbutton {
+  float: right;
+}
+
+.home {
+  width: 100%;
+}
+
+#header {
+  background-image: url(./images/Space_background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-size:cover;
+  
+}
+
+@media screen and (min-width: 1440px) {
+  #header {
+    height: 80vh;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #header {
+    height: 60vh;
+  }
+}
+
+@media screen and (min-width: 1px) {
+  #header {
+    height: 40vh;
+  }
+}
+
+.center-align{
+  text-align:center;
+}
+.navbar{
+  margin-bottom:0px;
+}
+
+.row{
+  width:100%;
+  margin: 0px;
+  padding-right:0px;
+}
+.no-padding
+{
+  padding: 0px;
+}
+
+.Rubik{
+  font-family: 'rubik', sans-serif;
+  font-weight:600;
+}
+
+.fixed-top{
+  position:fixed;
+  top: 0;
+}

@@ -1,0 +1,19 @@
+{
+    "python": {
+        "test_name": "python",
+        "pre_requisites": "",
+        "questions": ""
+    },
+
+    "java": {
+        "test_name": "java",
+        "pre_requisites": "",
+        "questions": ""
+    },
+
+    "algorithms": {
+        "test_name": "algorithms",
+        "pre_requisites": "",
+        "questions": ""
+    }
+}

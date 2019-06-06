@@ -1,0 +1,31 @@
+.questionPage {
+  background-color: black;
+  height: 100vh;
+}
+
+#question {
+  color: white;
+  margin-top: 5vh;
+}
+
+#qCards {
+  display: inline;
+}
+
+.countdown {
+  margin-top: 10vh;
+}
+
+#questionPageLogo {
+  margin-top: 3vh;
+}
+.qPagelogo {
+  height: 4rem;
+  margin-left: -3vw;
+}
+
+#submitButton {
+  width: 10vw;
+  height: 5vh;
+  margin-top: 10vh;
+}

@@ -1,0 +1,22 @@
+#background {
+  background-image: url("../images/space\ stars\ background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-color: #2b223d;
+  height: 77vh;
+  margin-top: 60px;
+}
+
+#bars{
+  margin-top: 30px;
+}
+
+#links{
+  color: white;
+  width: 500px;
+  background-color: transparent;
+  border-color: white;
+}
+.button{
+  width: 30px
+}
