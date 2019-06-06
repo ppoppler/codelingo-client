@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Navbar, Nav, Button, ButtonGroup } from "react-bootstrap";
 import "../css/Navigation.css";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import logo from "../images/codelingowo.png";
 import "../css/UserNav.css";
 class UserNav extends Component {
