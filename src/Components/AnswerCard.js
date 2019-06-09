@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
-import "../css/QuestionCard.css";
+import "../css/AnswerCard.css";
 import UserNav from "./UserNav";
-class QuestionCard extends Component {
+
+
+/**
+ * React Component for each Answer for a Question
+ */
+
+class AnswerCard extends Component {
   constructor(props) {
     super(props);
     this.props = props;
@@ -11,7 +17,7 @@ class QuestionCard extends Component {
   render() {
     return (
       <Form.Check
-        className="questionCard"
+        className="answerCard"
         type={"radio"}
         id={this.props.answer}
         name="answer"
@@ -22,4 +28,4 @@ class QuestionCard extends Component {
   }
 }
 
-export default QuestionCard;
+export default AnswerCard;

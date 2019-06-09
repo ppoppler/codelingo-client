@@ -1,8 +1,3 @@
-.questionPage {
-  background-color: black;
-  height: 100vh;
-}
-
 #question {
   color: white;
   margin-top: 5vh;
@@ -16,7 +11,7 @@
   margin-top: 10vh;
 }
 
-#questionPageLogo {
+#questionLogo {
   margin-top: 3vh;
 }
 .qPagelogo {

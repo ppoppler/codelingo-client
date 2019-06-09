@@ -1,4 +1,4 @@
-.questionCard {
+.answerCard {
   border-style: solid;
   border-color: white;
   border-width: thick;
@@ -7,18 +7,18 @@
   height: 20vh;
 }
 
-.questionCard h1 {
+.answerCard h1 {
   color: white;
   text-align: center;
   margin-top: 7vh;
 }
 
-.questionCard label {
+.answerCard label {
   width: fill;
   height: fill;
   border-radius: 15px;
 }
-.questionCard:hover {
+.answerCard:hover {
   background-color: green !important;
 }
 

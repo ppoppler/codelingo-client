@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import { Row, Col, Button, Form, Navbar } from "react-bootstrap";
-import QuestionCard from "../Components/QuestionCard";
+import AnswerCard from "./AnswerCard";
 import Container from "react-bootstrap/Container";
-import Timer from "../Components/Timer";
+import Timer from "./Timer";
 import "../css/QuestionPage.css";
-import Result from "../Components/Result";
-import UserNav from "../Components/UserNav";
+import Result from "./Result";
+import UserNav from "./UserNav";
 import logo from "../images/codelingowo.png";
 
-var j = require("../json_tests/test");
+/**
+ * React component for displaying a question  
+ */
+class Question extends Component {
+  state = {
+    selection: "",
+    answerState: "undefined",
+    timeout: false,
+    displayResult: false
+  };
 
-class QuestionPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selection: "",
-      answerState: "undefined",
-      timeout: false,
-      displayResult: false
-    };
-  }
 
   handleChange(e) {
     this.setState({ selection: e.target.value });
@@ -31,12 +30,12 @@ class QuestionPage extends Component {
 
   submit() {
     if (
-      this.state.selection === j.Question.correct_ans &&
+      this.state.selection === this.props.question.correct_ans &&
       !this.state.timeout
     ) {
       console.log("correct");
       this.setState({ answerState: "correct" });
-    } else if (this.state.selection != j.Question.correct_ans) {
+    } else if (this.state.selection != this.props.question.correct_ans) {
       this.setState({ answerState: "incorrect" });
     } else if (this.state.timeout) {
       this.setState({ answerState: "timeout" });
@@ -49,24 +48,23 @@ class QuestionPage extends Component {
     let size = 12 / answers.length;
     return answers.map(element => (
       <Col md={size} align="center">
-        <QuestionCard answer={element} />
+        <AnswerCard answer={element} />
       </Col>
     ));
   }
 
   render() {
     return (
-      <div className="questionPage">
+      <div className="question">
         <UserNav />
         <Container>
-          <Row id="questionPageLogo">
+          <Row id="questionLogo">
             <Col md={12}>
               <a href="#home">
                 <img src={logo} className="qPagelogo" alt="" />
               </a>
             </Col>
           </Row>
-        
 
           <Row className="countdown">
             <Col>
@@ -76,14 +74,14 @@ class QuestionPage extends Component {
 
           <Row>
             <Col>
-              <h1 id="question">{j.Question.text}</h1>
+              <h1 id="question">{this.props.question.text}</h1>
             </Col>
           </Row>
 
           <Row id="qCards" fluid="true">
             <Form>
               <Form.Group onChange={this.handleChange.bind(this)}>
-                {this.createCards(j.Question.answers)}
+                {this.createCards(this.props.question.answers)}
               </Form.Group>
             </Form>
           </Row>
@@ -104,7 +102,7 @@ class QuestionPage extends Component {
           {(this.state.displayResult && this.state.answerState) ===
           "timeout" ? (
             <Result
-              correctAnswer={j.Question.correct_ans}
+              correctAnswer={this.props.question.correct_ans}
               answerState={"timeout"}
             />
           ) : null}
@@ -112,14 +110,14 @@ class QuestionPage extends Component {
           {this.state.displayResult &&
           this.state.answerState === "incorrect" ? (
             <Result
-              correctAnswer={j.Question.correct_ans}
+              correctAnswer={this.props.question.correct_ans}
               answerState={"incorrect"}
             />
           ) : null}
 
           {this.state.displayResult && this.state.answerState === "correct" ? (
             <Result
-              correctAnswer={j.Question.correct_ans}
+              correctAnswer={this.props.question.correct_ans}
               answerState={"correct"}
             />
           ) : null}
@@ -129,4 +127,4 @@ class QuestionPage extends Component {
   }
 }
 
-export default QuestionPage;
+export default Question;
