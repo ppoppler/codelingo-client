@@ -24,6 +24,12 @@ class Question extends Component {
     this.setState({ selection: e.target.value });
   }
 
+  handleTime(e) {
+    this.setState({answerState: "timeout"});
+    this.setState({timeout: true});
+    this.setState({displayResult: true});
+  }
+
   remainingTime(e) {
     console.log("testing " + e.target.state);
   }
@@ -37,10 +43,7 @@ class Question extends Component {
       this.setState({ answerState: "correct" });
     } else if (this.state.selection != this.props.question.correct_ans) {
       this.setState({ answerState: "incorrect" });
-    } else if (this.state.timeout) {
-      this.setState({ answerState: "timeout" });
-      this.setState({ displayResult: true });
-    }
+    } 
     this.setState({ displayResult: true });
     console.log(this.state.displayResult);
   }
@@ -68,7 +71,7 @@ class Question extends Component {
 
           <Row className="countdown">
             <Col>
-              <Timer time={30} onChange={this.remainingTime.bind(this)} />
+              <Timer time={30} onTime = {this.handleTime.bind(this)} onChange={this.remainingTime.bind(this)} />
             </Col>
           </Row>
 

@@ -5,7 +5,7 @@ import "../css/Timer.css";
 class Timer extends Component {
   constructor(props) {
     super(props);
-    this.time = props.time;
+    this.time = this.props.time;
     this.state = { percentage: 100, timeUp: false };
   }
 
@@ -15,10 +15,10 @@ class Timer extends Component {
 
   tick(timer) {
     if (this.state.percentage !== 0) {
-      this.setState({ percentage: this.state.percentage - 1 });
+      this.setState({ percentage: this.state.percentage - 1});
     } else {
       clearInterval(timer);
-      this.setState({ timeUp: true });
+      this.props.onTime();
       console.log("done");  
     }
   }
