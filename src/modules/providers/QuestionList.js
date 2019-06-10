@@ -2,6 +2,9 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { Query } from "react-apollo";
 
+/**
+ * GraphQL query that receives all the questions by module
+ */
 export const GET_PYTHON_ANSWERS = gql`
   {
     getQuestionsByModule(input: { language: "python", lesson: "keywords" }) {
@@ -14,6 +17,10 @@ export const GET_PYTHON_ANSWERS = gql`
   }
 `;
 
+/**
+ * Decorator Component class that contains the query data from GraphQL
+ * @param {Component} Component React component that contains the loading and data properties
+ */
 const withPythonAnswers = Component => (props) => {
     return ( 
         <Query query = {GET_PYTHON_ANSWERS}>
