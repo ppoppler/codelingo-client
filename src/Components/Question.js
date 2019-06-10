@@ -20,33 +20,45 @@ class Question extends Component {
   };
 
 
+  /**
+   * Function event handler that occurs when a user selects an answer
+   * @param {Event} e Event that changes the selection to the currently selected AnswerCard
+   */
   handleChange(e) {
     this.setState({ selection: e.target.value });
   }
 
+  /**
+   * Function event handler that occurs when the timer from the Timer React Component ends
+   * @param {Event} e Event that displays a failure option when the time runs out 
+   */
   handleTime(e) {
     this.setState({answerState: "timeout"});
     this.setState({timeout: true});
     this.setState({displayResult: true});
   }
 
-  remainingTime(e) {
-    console.log("testing " + e.target.state);
-  }
-
+  /**
+   * Submit function that submits the current answer selected and then checks for truthiness
+   */
   submit() {
     if (
-      this.state.selection === this.props.question.correct_ans &&
+      this.state.selection === this.props.question.correctAnswer &&
       !this.state.timeout
     ) {
       console.log("correct");
       this.setState({ answerState: "correct" });
-    } else if (this.state.selection != this.props.question.correct_ans) {
+    } else if (this.state.selection != this.props.question.correctAnswer) {
       this.setState({ answerState: "incorrect" });
     } 
     this.setState({ displayResult: true });
     console.log(this.state.displayResult);
   }
+
+  /**
+   * Function that creates AnswerCard React Components of specific sizes depending on how many answers the question has
+   * @param {Array} answers Array containing all of the answer JSON objects.
+   */
   createCards(answers) {
     let size = 12 / answers.length;
     return answers.map(element => (
@@ -57,6 +69,7 @@ class Question extends Component {
   }
 
   render() {
+    console.log(this.props.question)
     return (
       <div className="question">
         <UserNav />
@@ -71,13 +84,13 @@ class Question extends Component {
 
           <Row className="countdown">
             <Col>
-              <Timer time={30} onTime = {this.handleTime.bind(this)} onChange={this.remainingTime.bind(this)} />
+              <Timer time={30} onTime = {this.handleTime.bind(this)} />
             </Col>
           </Row>
 
           <Row>
             <Col>
-              <h1 id="question">{this.props.question.text}</h1>
+              <h1 id="question">{this.props.question.question}</h1>
             </Col>
           </Row>
 
@@ -105,7 +118,7 @@ class Question extends Component {
           {(this.state.displayResult && this.state.answerState) ===
           "timeout" ? (
             <Result
-              correctAnswer={this.props.question.correct_ans}
+              correctAnswer={this.props.question.correctAnswer}
               answerState={"timeout"}
             />
           ) : null}
@@ -113,14 +126,14 @@ class Question extends Component {
           {this.state.displayResult &&
           this.state.answerState === "incorrect" ? (
             <Result
-              correctAnswer={this.props.question.correct_ans}
+              correctAnswer={this.props.question.correctAnswer}
               answerState={"incorrect"}
             />
           ) : null}
 
           {this.state.displayResult && this.state.answerState === "correct" ? (
             <Result
-              correctAnswer={this.props.question.correct_ans}
+              correctAnswer={this.props.question.correctAnswer}
               answerState={"correct"}
             />
           ) : null}

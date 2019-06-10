@@ -4,6 +4,9 @@ import "../css/Navigation.css";
 import PropTypes from "prop-types";
 import logo from "../images/codelingowo.png";
 
+/**
+ * React component for the navbar when a user is not logged in 
+ */
 class Navigation extends Component {
   onLogout(e) {
     e.preventDefault();

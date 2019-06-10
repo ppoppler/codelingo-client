@@ -1,3 +1,7 @@
+
+/**
+ * Contains test data for all the questions, eventually replaced by our MongoDB database
+ */
 const testData = [{
   "text": "Which is the correct way to define a function in python?",
   "answers": ["define foo():", "def foo():", "function foo():"],

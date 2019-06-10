@@ -4,6 +4,10 @@ import "../css/Navigation.css";
 import PropTypes from "prop-types";
 import logo from "../images/codelingowo.png";
 import "../css/UserNav.css";
+
+/**
+ * React Component for the Navigation Bar when a user is logged in
+ */
 class UserNav extends Component {
   onLogout(e) {
     e.preventDefault();
@@ -13,7 +17,7 @@ class UserNav extends Component {
   render() {
     // const { isAuthenticated, user } = this.props.auth;
     const authLink = (
-        <ButtonGroup id="loginButtonGroup" aria-label="Basic">
+      <ButtonGroup id="loginButtonGroup" aria-label="Basic">
         <Button
           id="account"
           variant="success"
@@ -24,22 +28,22 @@ class UserNav extends Component {
         >
           Account
         </Button>
-        </ButtonGroup>
-    )
-    
-    const guestLinks = (
-        <Button
-          id="account"
-          variant="success"
-          size="lg"
-          className="Rubik"
-          style={{ fontSize: "18px" }}
-          href="/profile"
-        >
-          Account
-        </Button>
+      </ButtonGroup>
     );
-    
+
+    const guestLinks = (
+      <Button
+        id="account"
+        variant="success"
+        size="lg"
+        className="Rubik"
+        style={{ fontSize: "18px" }}
+        href="/profile"
+      >
+        Account
+      </Button>
+    );
+
     return (
       <Navbar
         style={{ backgroundColor: "#171717" }}
@@ -49,7 +53,10 @@ class UserNav extends Component {
         <Navbar.Brand href="/" className="mr-auto">
           <img src={logo} className="logo" alt="codelingo" />
         </Navbar.Brand>
-        <Nav className="ml-auto">{authLink}{/* isAuthenticated ? authLink : guestLinks */}</Nav>
+        <Nav className="ml-auto">
+          {authLink}
+          {/* isAuthenticated ? authLink : guestLinks */}
+        </Nav>
       </Navbar>
     );
   }
