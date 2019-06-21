@@ -12,7 +12,12 @@ import {AUTH_TOKEN} from '../constants';
 class Navigation extends Component {
   onLogout(e) {
     e.preventDefault();
-    this.props.logoutUser(this.props.history);
+    this.logoutUser();
+  }
+
+  logoutUser() {
+    localStorage.setItem(AUTH_TOKEN, '');
+    this.render();
   }
 
   render() {
@@ -36,7 +41,7 @@ class Navigation extends Component {
           className="Rubik"
           style={{ fontSize: "18px" }}
           href="#"
-          onClick={this.onLogout.bind(this)}
+          onClick={this.logoutUser.bind(this)}
         >
           Logout
         </Button>
@@ -71,10 +76,7 @@ class Navigation extends Component {
   }
 }
 
-Navigation.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
+
 
 const mapStateToProps = state => ({
   auth: state.auth

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 import { AUTH_TOKEN } from "../constants";
+import { Mutation } from 'react-apollo';
+import { LOGIN_USER } from '../modules/providers/UserAuthentication';
+import gql from 'graphql-tag';
 
 class Login extends Component {
   constructor() {
@@ -55,6 +58,14 @@ class Login extends Component {
     localStorage.setItem(AUTH_TOKEN, token);
   }
 
+  async confirm(data) {
+    console.log(data);
+    const token  = data.loginUser.token;
+    this.saveUserData(token);
+    console.log(token);
+    this.props.history.push("../profile");
+  }
+
   render() {
     const { email, password, name, errors } = this.state;
     return (
@@ -89,17 +100,20 @@ class Login extends Component {
             )}
           </div>
           <div className="form-group">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={this.routeChange}
-            >
-              Login User
-            </button>
+            <Mutation mutation={LOGIN_USER} variables={{ email, password }}
+              onCompleted={data => this.confirm(data)}>
+              {mutation => (<button
+                type="submit"
+                className="btn btn-primary"
+                onClick={mutation}
+              >
+                Login User
+            </button>)}
+            </Mutation>
           </div>
           <div className="form-group">
             <button
-              type="submit"
+              type="button"
               className="btn btn-secondary"
               onClick={this.registerPage}
             >
