@@ -7,7 +7,6 @@ class Profile extends Component {
   render() {
     return (
       <div id="background">
-      <UserNav/>
         <br />
         <p>Welcome, Philip!</p>
         <div id="bars">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col, Image, Button, ProgressBar } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import Navigation from "../../Components/UserNav";
+import Navigation from "../../Components/Navigation";
 import happyPlanet from "../../images/Happy Planet.png";
 import sadPlanet from "../../images/Sad Planet.png";
 import neutralPlanet from "../../images/Neutral Planet.png";
@@ -11,7 +11,7 @@ export default class CourseDashboard extends Component{
     render() {
         return(
             <div id = "background"><br /><br />
-            <Navigation/>
+            
             <Container className="courseDashboard">
                 <Row>
                     <Col>

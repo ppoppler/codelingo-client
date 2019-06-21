@@ -19,7 +19,7 @@ class QuestionPage extends Component {
   render() {
     console.log(this.props.questions);
     if (!this.props.loading && this.props.questions.length > 0) {
-      return <Question question={this.props.questions[0]} />;
+      return <Question question={this.props.questions[Math.floor(Math.random() * this.props.questions.length)]} />;
     } else {
       return (
         <div>

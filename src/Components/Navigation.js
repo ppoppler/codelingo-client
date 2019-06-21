@@ -3,10 +3,12 @@ import { Navbar, Nav, Button, ButtonGroup } from "react-bootstrap";
 import "../css/Navigation.css";
 import PropTypes from "prop-types";
 import logo from "../images/codelingowo.png";
+import {AUTH_TOKEN} from '../constants';
 
 /**
  * React component for the navbar when a user is not logged in 
  */
+
 class Navigation extends Component {
   onLogout(e) {
     e.preventDefault();
@@ -14,9 +16,19 @@ class Navigation extends Component {
   }
 
   render() {
-    
+    const authToken = localStorage.getItem(AUTH_TOKEN);
     const authLink = (
       <ButtonGroup id="loginButtonGroup" aria-label="Basic">
+        <Button
+          id="account"
+          variant="success"
+          size="lg"
+          className="Rubik"
+          style={{ fontSize: "18px" }}
+          href="/profile"
+        >
+          Account
+        </Button>
         <Button
           id="loginButton"
           variant="success"
@@ -51,8 +63,9 @@ class Navigation extends Component {
         <Navbar.Brand href="/" className="mr-auto">
           <img src={logo} className="logo" alt="codelingo" />
         </Navbar.Brand>
-        {guestLinks}
-        {/* {{isAuthenticated ? authLink : guestLinks}} */}
+        {authToken ? (
+          authLink) : (guestLinks
+        )}
       </Navbar>
     );
   }
