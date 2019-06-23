@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import { AUTH_TOKEN } from "../constants";
-import { Mutation } from 'react-apollo';
-import { LOGIN_USER } from '../modules/providers/UserAuthentication';
-import gql from 'graphql-tag';
+import { AUTH_TOKEN, USER_INFO } from "../constants";
+import { Mutation } from "react-apollo";
+import { LOGIN_USER } from "../modules/providers/UserAuthentication";
+import gql from "graphql-tag";
 
 class Login extends Component {
   constructor() {
@@ -54,16 +54,25 @@ class Login extends Component {
     this.props.history.push(path);
   }
 
-  saveUserData(token) {
+  saveUserData(token, user) {
     localStorage.setItem(AUTH_TOKEN, token);
+    localStorage.setItem(USER_INFO, JSON.stringify(user));
+    console.log(JSON.parse(localStorage.getItem(USER_INFO)));
   }
 
   async confirm(data) {
     console.log(data);
-    const token  = data.loginUser.token;
-    this.saveUserData(token);
+    const token = data.loginUser.token;
+    const user = data.loginUser.user;
+    this.saveUserData(token, user);
     console.log(token);
-    this.props.history.push("../profile");
+    console.log(user);
+    if (token) {
+      this.props.history.push("../profile");
+    }
+    else{ 
+
+    }
   }
 
   render() {
@@ -100,15 +109,20 @@ class Login extends Component {
             )}
           </div>
           <div className="form-group">
-            <Mutation mutation={LOGIN_USER} variables={{ email, password }}
-              onCompleted={data => this.confirm(data)}>
-              {mutation => (<button
-                type="submit"
-                className="btn btn-primary"
-                onClick={mutation}
-              >
-                Login User
-            </button>)}
+            <Mutation
+              mutation={LOGIN_USER}
+              variables={{ email, password }}
+              onCompleted={data => this.confirm(data)}
+            >
+              {mutation => (
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  onClick={mutation}
+                >
+                  Login User
+                </button>
+              )}
             </Mutation>
           </div>
           <div className="form-group">

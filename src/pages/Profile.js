@@ -1,14 +1,24 @@
 import React, { Component } from "react";
 import { Row, Col, Image, Button, ProgressBar } from "react-bootstrap";
+import {AUTH_TOKEN, USER_INFO} from "../constants";
 import "../css/Profile.css";
-import UserNav from "../Components/UserNav";
 
 class Profile extends Component {
+
+  state ={
+    user: ''
+  }
+
+  componentDidMount(){
+    
+    this.setState({user: JSON.parse(localStorage.getItem(USER_INFO))});
+  }
+
   render() {
     return (
       <div id="background">
         <br />
-        <p>Welcome, Philip!</p>
+        <p>Welcome, {this.state.user.name}!</p>
         <div id="bars">
         <center>
         <a href="../module"><Button id="links">
