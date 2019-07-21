@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import withPythonAnswers from "../modules/providers/QuestionList";
 import Question from "../Components/Question";
+import {CURRENT_LESSON} from "../constants.js";
 
 /**
  * React component that contains all the question pages
@@ -10,6 +11,8 @@ class QuestionPage extends Component {
   state = {
     currentQuestion: {}
   };
+
+  
 
   /**
    * TODO: create an event handler function in QuestionPage to be implemented with question, so everytime a question is submitted (or hit next or skipped)

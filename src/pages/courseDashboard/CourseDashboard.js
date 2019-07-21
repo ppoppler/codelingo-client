@@ -2,78 +2,52 @@ import React, { Component } from "react";
 import { Row, Col, Image, Button, ProgressBar } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Navigation from "../../Components/Navigation";
-import happyPlanet from "../../images/Happy Planet.png";
-import sadPlanet from "../../images/Sad Planet.png";
-import neutralPlanet from "../../images/Neutral Planet.png";
-import { AUTH_TOKEN, USER_INFO } from "../../constants";
+import HappyPlanet from "./HappyPlanet.js";
+import NeutralPlanet from "./NeutralPlanet.js";
+import SadPlanet from "./SadPlanet.js";
+import { capitalize } from "../../helpers.js";
+import { AUTH_TOKEN, USER_INFO, CURRENT_LESSON } from "../../constants";
 import "../../css/CourseDashboard.css";
+
 
 export default class CourseDashboard extends Component {
   state = {
     user: "",
-    module: {}
+    module: {},
+    isLoaded: false
   };
 
   async componentDidMount() {
     await this.setState({ user: JSON.parse(localStorage.getItem(USER_INFO)) });
-    await this.setState({ module: this.state.user.current_modules[0] });
-    
+    await this.setState({ module: this.state.user.current_modules[0], isLoaded: true},);
+ 
   }
 
   render() {
+    if(this.state.isLoaded)
+      console.log(this.state.module);
+ 
     return (
       <div id="background">
         <br />
         <br />
 
-        <div>{this.state.user.name}</div>
-        <div>{this.state.module.name}</div>
+        <h1>{this.state.user.name}</h1>
+        <h2>{capitalize(this.state.module.name)}</h2>
 
         <Container className="courseDashboard">
-          <Row>
-            <Col>
-              <p>Variables</p>
-              <img src={happyPlanet} className="planet" alt="module" />
-            </Col>
-            <Col />
-            <Col />
-            <Col>
-              <p>Keywords</p>
-              <a href="../questions">
-                <img src={neutralPlanet} className="planet" alt="module" />
-              </a>
-            </Col>
-            <Col />
-            <Col />
-            <Col>
-              <p>Strings</p>
-              <img src={sadPlanet} className="planet" alt="module" />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={3} />
-            <Col md={3} />
-            <Col md={3} />
-            <Col md={3} />
-            <Col md={3} />
-            <Col md={3} />
-            <Col md={3} />
-          </Row>
-          <Row>
-            <Col />
-            <Col />
-            <Col>
-              <p>Expressions</p>
-              <img src={happyPlanet} className="planet" alt="module" />
-            </Col>
-            <Col />
-            <Col />
-            <Col>
-              <p>Conditionals</p>
-              <img src={sadPlanet} className="planet" alt="module" />
-            </Col>
-            <Col />
-          </Row>
+          {this.state.isLoaded && (
+            <Row>
+              {this.state.module.completed_lessons.map((lesson) => 
+                <HappyPlanet lesson={lesson} />
+              )}
+              {this.state.module.current_lessons.map((lesson)=> 
+                <NeutralPlanet lesson={lesson} />)}
+              {this.state.module.incomplete_lessons.map((lesson) => 
+                <SadPlanet lesson={lesson} />)}
+            </Row>
+          )}
+
           <br />
           <br />
           <br />
@@ -95,7 +69,7 @@ export default class CourseDashboard extends Component {
               />
             </ProgressBar>
             <br />
-            <h1>Python</h1>
+            
           </center>
         </Container>
       </div>
