@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Button, ButtonGroup } from "react-bootstrap";
+import { Navbar, Button, ButtonGroup } from "react-bootstrap";
 import "../css/Navigation.css";
-import PropTypes from "prop-types";
 import logo from "../images/codelingowo.png";
 import {AUTH_TOKEN} from '../constants';
 
@@ -40,7 +39,7 @@ class Navigation extends Component {
           size="lg"
           className="Rubik"
           style={{ fontSize: "18px" }}
-          href="#"
+          href="/"
           onClick={this.logoutUser.bind(this)}
         >
           Logout
